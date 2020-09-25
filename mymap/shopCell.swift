@@ -11,9 +11,7 @@ import UIKit
 class shopCell: UICollectionViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var couponTitleLabel: UILabel!
-    @IBOutlet weak var couponPeriodLabel: UILabel!
-    @IBOutlet weak var couponMessageLabel: UILabel!
+    @IBOutlet weak var noteLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

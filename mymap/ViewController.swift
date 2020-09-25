@@ -19,14 +19,12 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     var shopList : [
         (
         name:String , address:String, latitude:Double, longitude:Double,
-        coupon_title:String, coupon_period:String, coupon_message:String,
-        identifier:String
+        note:String , identifier:String
         )
     ] = []
     
-    var notice_title:String = "hoge"
-    var notice_subtitle:String = "hoge"
-    var notice_body:String = "hoge"
+    var notice_name:String = "hoge"
+    var notice_note:String = "hoge"
     
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -70,9 +68,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
             address : "東京都青梅市末広町２丁目２−１",
             latitude : 35.778773,
             longitude : 139.306377,
-            coupon_title : "郵送料10%引き",
-            coupon_period : "8/1(土)〜8/31(月)",
-            coupon_message : "クーポンメッセージ、クーポンメッセージ、クーポンメッセージ、クーポンメッセージ",
+            note : "ノートノートノートノートノートノートノートノートノートノート",
             identifier : "OmeSuehiroPostOffice"
         ) )
         shopList.append( (
@@ -80,9 +76,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
             address : "東京都青梅市新町３丁目１５−１",
             latitude : 35.779938,
             longitude : 139.304928,
-            coupon_title : "惣菜全品20%オフ",
-            coupon_period : "9/1(土)〜9/30(月)",
-            coupon_message : "お一人様三品まで。お一人様三品まで。お一人様三品まで。。お一人様三品まで。",
+            note : "ノートノートノートノートノートノートノートノートノートノート",
             identifier : "SuperOZAMSuehiro"
         ) )
         shopList.append( (
@@ -90,9 +84,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
             address : "東京都青梅市新町５丁目 4番3号",
             latitude : 35.786547,
             longitude : 139.307555,
-            coupon_title : "準新作DVDレンタル1枚100円",
-            coupon_period : "10/1(土)〜10/31(月)",
-            coupon_message : "10枚以上レンタルで14日間レンタルできます。10枚以上レンタルで14日間レンタルできます。",
+            note : "ノートノートノートノートノートノートノートノートノートノート",
             identifier : "GeoOumeshinmachi"
         ) )
         
@@ -123,9 +115,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "shopCell", for: indexPath) as! shopCell
         
         cell.nameLabel.text = shopList[indexPath.row].name
-        cell.couponTitleLabel.text = shopList[indexPath.row].coupon_title
-        cell.couponPeriodLabel.text = shopList[indexPath.row].coupon_period
-        cell.couponMessageLabel.text = shopList[indexPath.row].coupon_message
+        cell.noteLabel.text = shopList[indexPath.row].note
         
         return cell
     }
@@ -133,7 +123,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView,
                             layout collectionViewLayout: UICollectionViewLayout,
                             sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 280, height: 160)
+        return CGSize(width: 280, height: 120)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations:[CLLocation]) {
@@ -219,25 +209,22 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         
         if( region.identifier == "OmeSuehiroPostOffice" ){
             
-            notice_title = "青梅末広郵便局"
-            notice_subtitle = "郵送料10%引き"
-            notice_body = "8/1(土)〜8/31(月)\n"+"クーポンメッセージ、クーポンメッセージ、クーポンメッセージ"
+            notice_name = "青梅末広郵便局"
+            notice_note = "ノートノートノートノートノートノートノートノートノートノートノートノートノート"
             
         }else if( region.identifier == "SuperOZAMSuehiro" ){
             
-            notice_title = "スーパーオザム 末広店"
-            notice_subtitle = "惣菜全品20%オフ"
-            notice_body = "9/1(土)〜9/30(月)\n"+"お一人様三品まで。お一人様三品まで。お一人様三品まで。。お一人様三品まで。"
+            notice_name = "スーパーオザム 末広店"
+            notice_note = "ノートノートノートノートノートノートノートノートノートノートノートノートノート"
             
         }else if( region.identifier == "GeoOumeshinmachi" ){
             
-            notice_title = "ゲオ青梅新町店"
-            notice_subtitle = "準新作DVDレンタル1枚100円"
-            notice_body = "10/1(土)〜10/31(月)\n"+"10枚以上レンタルで14日間レンタルできます。10枚以上レンタルで14日間レンタルできます。"
+            notice_name = "ゲオ青梅新町店"
+            notice_note = "ノートノートノートノートノートノートノートノートノートノートノートノートノート"
             
         }
         
-        doLocalNotification(title:notice_title,subtitle:notice_subtitle,body:notice_body)
+        doLocalNotification(name:notice_name,note:notice_note)
     }
 
     // ジオフェンス領域から出たときに呼ばれる
@@ -253,16 +240,15 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     }
     
     // ローカル通知の実行
-    func doLocalNotification(title:String,subtitle:String,body:String){
+    func doLocalNotification(name:String,note:String){
         
         //print("doLocalNotification")
         
         // ローカル通知のの内容
         let content = UNMutableNotificationContent()
         content.sound = UNNotificationSound.default
-        content.title = title
-        content.subtitle = subtitle
-        content.body = body
+        content.title = name
+        content.body = note
         
         // タイマーの時間（秒）をセット
         let timer = 1
