@@ -14,6 +14,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var mapView: MKMapView!
     var locationManager: CLLocationManager!
 
+    @IBAction func clickZoomin(_ sender: Any) {
+        print("[DBG]clickZoomin")
+    }
+    
+    @IBAction func clickZoomout(_ sender: Any) {
+        print("[DBG]clickZoomout")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
