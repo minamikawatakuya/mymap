@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import MapKit
+import UserNotifications
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     var myLock = NSLock()
@@ -203,7 +204,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             
         }
         
-        //doLocalNotification(title:notice_title,subtitle:notice_subtitle,body:notice_body)
+        doLocalNotification(title:notice_title,subtitle:notice_subtitle,body:notice_body)
     }
 
     // ジオフェンス領域から出たときに呼ばれる
@@ -216,6 +217,32 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         let strTmp = "モニタリングエラーです。"
         print(strTmp)
+    }
+    
+    // ローカル通知の実行
+    func doLocalNotification(title:String,subtitle:String,body:String){
+        
+        //print("doLocalNotification")
+        
+        // ローカル通知のの内容
+        let content = UNMutableNotificationContent()
+        content.sound = UNNotificationSound.default
+        content.title = title
+        content.subtitle = subtitle
+        content.body = body
+        
+        // タイマーの時間（秒）をセット
+        let timer = 1
+        // ローカル通知リクエストを作成
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(timer), repeats: false)
+        let identifier = NSUUID().uuidString
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request){ (error : Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+        
     }
 
 
