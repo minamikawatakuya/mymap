@@ -14,6 +14,8 @@
 		7D228B56251DA87C00C78024 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D228B55251DA87C00C78024 /* Assets.xcassets */; };
 		7D228B59251DA87C00C78024 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D228B57251DA87C00C78024 /* LaunchScreen.storyboard */; };
 		7D9DC510251E04B400B6AA4C /* hoge_ozakueki.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 7D9DC50F251E04B400B6AA4C /* hoge_ozakueki.gpx */; };
+		7D9DC513251E0E3A00B6AA4C /* shopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9DC511251E0E3A00B6AA4C /* shopCell.swift */; };
+		7D9DC514251E0E3A00B6AA4C /* shopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D9DC512251E0E3A00B6AA4C /* shopCell.xib */; };
 		7DFBA735251DAADD00439BE5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DFBA734251DAADD00439BE5 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +29,8 @@
 		7D228B58251DA87C00C78024 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D228B5A251DA87C00C78024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D9DC50F251E04B400B6AA4C /* hoge_ozakueki.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = hoge_ozakueki.gpx; sourceTree = "<group>"; };
+		7D9DC511251E0E3A00B6AA4C /* shopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shopCell.swift; sourceTree = "<group>"; };
+		7D9DC512251E0E3A00B6AA4C /* shopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = shopCell.xib; sourceTree = "<group>"; };
 		7DFBA734251DAADD00439BE5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -70,6 +74,8 @@
 				7D228B55251DA87C00C78024 /* Assets.xcassets */,
 				7D228B57251DA87C00C78024 /* LaunchScreen.storyboard */,
 				7D228B5A251DA87C00C78024 /* Info.plist */,
+				7D9DC511251E0E3A00B6AA4C /* shopCell.swift */,
+				7D9DC512251E0E3A00B6AA4C /* shopCell.xib */,
 			);
 			path = mymap;
 			sourceTree = "<group>";
@@ -143,6 +149,7 @@
 				7D228B59251DA87C00C78024 /* LaunchScreen.storyboard in Resources */,
 				7D228B56251DA87C00C78024 /* Assets.xcassets in Resources */,
 				7D228B54251DA87700C78024 /* Main.storyboard in Resources */,
+				7D9DC514251E0E3A00B6AA4C /* shopCell.xib in Resources */,
 				7D9DC510251E04B400B6AA4C /* hoge_ozakueki.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -157,6 +164,7 @@
 				7D228B51251DA87700C78024 /* ViewController.swift in Sources */,
 				7D228B4D251DA87700C78024 /* AppDelegate.swift in Sources */,
 				7D228B4F251DA87700C78024 /* SceneDelegate.swift in Sources */,
+				7D9DC513251E0E3A00B6AA4C /* shopCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

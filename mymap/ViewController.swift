@@ -11,7 +11,8 @@ import CoreLocation
 import MapKit
 import UserNotifications
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate,
+UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var myLock = NSLock()
     let goldenRatio = 1.618
     
@@ -26,6 +27,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var notice_title:String = "hoge"
     var notice_subtitle:String = "hoge"
     var notice_body:String = "hoge"
+    
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     
     @IBOutlet var mapView: MKMapView!
     var locationManager: CLLocationManager!
@@ -99,8 +104,36 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         mapView.showsUserLocation = true
         
+        collectionView.register(UINib(nibName: "shopCell", bundle: nil), forCellWithReuseIdentifier: "shopCell")
+        
         doGeofenceStart()
         
+        let tblBackColor: UIColor = UIColor.clear
+        collectionView.backgroundColor = tblBackColor
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return shopList.count
+        //return 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "shopCell", for: indexPath) as! shopCell
+        
+        cell.nameLabel.text = shopList[indexPath.row].name
+        cell.couponTitleLabel.text = shopList[indexPath.row].coupon_title
+        cell.couponPeriodLabel.text = shopList[indexPath.row].coupon_period
+        cell.couponMessageLabel.text = shopList[indexPath.row].coupon_message
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                            layout collectionViewLayout: UICollectionViewLayout,
+                            sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 280, height: 160)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations:[CLLocation]) {
