@@ -57,33 +57,6 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /*
-        shopList.append( (
-            name : "青梅末広郵便局" ,
-            address : "東京都青梅市末広町２丁目２−１",
-            latitude : 35.778773,
-            longitude : 139.306377,
-            note : "ノートノートノートノートノートノートノートノートノートノート",
-            identifier : "OmeSuehiroPostOffice"
-        ) )
-        shopList.append( (
-            name : "スーパーオザム 末広店" ,
-            address : "東京都青梅市新町３丁目１５−１",
-            latitude : 35.779938,
-            longitude : 139.304928,
-            note : "ノートノートノートノートノートノートノートノートノートノート",
-            identifier : "SuperOZAMSuehiro"
-        ) )
-        shopList.append( (
-            name : "ゲオ青梅新町店" ,
-            address : "東京都青梅市新町５丁目 4番3号",
-            latitude : 35.786547,
-            longitude : 139.307555,
-            note : "ノートノートノートノートノートノートノートノートノートノート",
-            identifier : "GeoOumeshinmachi"
-        ) )
- */
-        
         locationManager = CLLocationManager()  // 変数を初期化
         locationManager.delegate = self  // delegateとしてself(自インスタンス)を設定
 
@@ -218,11 +191,13 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         let strTmp = "設定したジオフェンスに入りました。"+region.identifier
         print(strTmp)
         
+        var placeIdentifier = ""
         let realm = try! Realm()
         let places = realm.objects(Place.self).filter("identifier like '"+region.identifier+"'")
         places.forEach { place in
             notice_name = place.name!
             notice_note = place.address!
+            placeIdentifier = place.identifier!
         }
         
         doLocalNotification(name:notice_name,note:notice_note)
@@ -233,7 +208,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
             latitude : 0.0,
             longitude : 0.0,
             note : notice_note,
-            identifier : "hoge"
+            identifier : placeIdentifier
         ) )
         
         collectionView.reloadData()
@@ -244,6 +219,29 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         let strTmp = "設定したジオフェンスから出ました。"+region.identifier
         print(strTmp)
+        
+        // 一覧から削除
+        var tmpList : [
+            (
+            name:String , address:String, latitude:Double, longitude:Double,
+            note:String , identifier:String
+            )
+        ] = []
+        for i in 0..<shopList.count{
+            if( shopList[i].identifier != region.identifier ){
+                tmpList.append( (
+                    name : shopList[i].name ,
+                    address : shopList[i].address,
+                    latitude : shopList[i].latitude,
+                    longitude : shopList[i].longitude,
+                    note : shopList[i].note,
+                    identifier : shopList[i].identifier
+                ) )
+            }
+        }
+        shopList = tmpList
+        collectionView.reloadData()
+        
     }
 
     // ジオフェンスの情報が取得できないときに呼ばれる
