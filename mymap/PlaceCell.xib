@@ -16,12 +16,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="225"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nsO-o2-gsg">
-                        <rect key="frame" x="16" y="11" width="288" height="34"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YI7-u8-PAd">
                         <rect key="frame" x="16" y="53" width="288" height="34"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -48,12 +42,19 @@
                             <action selector="pushUpdate:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Bwn-hk-Yc2"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p70-HQ-83t">
+                        <rect key="frame" x="16" y="24" width="288" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addressField" destination="lTC-y9-4sJ" id="WBs-NA-gDv"/>
-                <outlet property="idField" destination="nsO-o2-gsg" id="nL4-YI-lTp"/>
+                <outlet property="idLabel" destination="p70-HQ-83t" id="WUL-Jb-TFB"/>
                 <outlet property="identifierField" destination="4hh-sd-Cgt" id="l2E-k0-kiE"/>
                 <outlet property="nameField" destination="YI7-u8-PAd" id="seo-s6-a7B"/>
             </connections>

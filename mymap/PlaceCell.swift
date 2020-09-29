@@ -10,7 +10,7 @@ import UIKit
 
 class PlaceCell: UITableViewCell {
     
-    @IBOutlet weak var idField: UITextField!
+    @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var addressField: UITextField!
     @IBOutlet weak var identifierField: UITextField!

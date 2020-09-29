@@ -33,11 +33,14 @@ class View2Controller: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     @IBAction func pushRegist(_ sender: Any) {
         
+        let idvalue = self.tableCells.count + 1;
+        
         // モデルクラスのインスタンスを取得
         let MemoInstance:Place = Place()
          
         // テキスト入力値をインスタンスに詰める
-        MemoInstance.id = self.idField.text
+        //MemoInstance.id = self.idField.text
+        MemoInstance.id = String(idvalue)
         MemoInstance.name = self.nameField.text
         MemoInstance.address = self.addressField.text
         MemoInstance.identifier = self.identifierField.text
@@ -73,7 +76,7 @@ class View2Controller: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         let tmpCell: Place = self.tableCells[(indexPath as NSIndexPath).row];
         
-        cell.idField.text = tmpCell.id
+        cell.idLabel.text = tmpCell.id
         cell.nameField.text = tmpCell.name
         cell.addressField.text = tmpCell.address
         cell.identifierField.text = tmpCell.identifier
