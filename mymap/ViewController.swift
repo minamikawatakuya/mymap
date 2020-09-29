@@ -48,7 +48,6 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
             print("[DBG]latitudeDelta-1 : " + mapView.region.span.latitudeDelta.description)
             var regionSpan:MKCoordinateSpan = MKCoordinateSpan()
             regionSpan.latitudeDelta = mapView.region.span.latitudeDelta * goldenRatio
-            //regionSpan.latitudeDelta = mapView.region.span.longitudeDelta * GoldenRatio
             mapView.region.span = regionSpan
             print("[DBG]latitudeDelta-2 : " + mapView.region.span.latitudeDelta.description)
         }
@@ -102,8 +101,6 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         // データ全権取得
         self.tableCells = realm.objects(Place.self)
         
-        //print(self.tableCells.count)
-        
         doGeofenceStart()
         
     }
@@ -151,19 +148,6 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         // モニタリングしたい領域を作成
         var moniteringRegion = CLCircularRegion.init(center: moniteringCordinate, radius: 400.0, identifier: "OzakuEki")
         
-        /*
-        for i in 0..<shopList.count{
-            // モニタリングしたい場所の緯度経度を設定
-            moniteringCordinate = CLLocationCoordinate2DMake(shopList[i].latitude, shopList[i].longitude)
-            // モニタリングしたい領域を作成
-            moniteringRegion = CLCircularRegion.init(center: moniteringCordinate, radius: 100.0, identifier: shopList[i].identifier)
-            // モニタリング開始
-            locationManager.startMonitoring(for: moniteringRegion)
-        }
- */
-        
-        //print(self.tableCells.count)
-        
         for i in 0..<self.tableCells.count{
             
             let tmpCell: Place = self.tableCells[i]
@@ -173,18 +157,10 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
             
             CLGeocoder().geocodeAddressString(tmpAddress) { placemarks, error in
                 if let lat = placemarks?.first?.location?.coordinate.latitude {
-                    //print("緯度 : \(lat)")
-                    //cell.latitudeLabel.text = String(lat)
                     tmpLat = lat
-                    print("tmpLat")
-                    print(tmpLat)
                 }
                 if let lng = placemarks?.first?.location?.coordinate.longitude {
-                    //print("経度 : \(lng)")
-                    //cell.longitudeLabel.text = String(lng)
                     tmpLng = lng
-                    print("tmpLng")
-                    print(tmpLng)
                 }
                 
                 moniteringCordinate = CLLocationCoordinate2DMake(tmpLat, tmpLng)
@@ -193,19 +169,6 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
                 
             }
             
-            //print(tmpLat)
-            //print(tmpLng)
-            
-            // モニタリングしたい場所の緯度経度を設定
-            //moniteringCordinate = CLLocationCoordinate2DMake(shopList[i].latitude, shopList[i].longitude)
-            
-            
-            // モニタリングしたい領域を作成
-            //moniteringRegion = CLCircularRegion.init(center: moniteringCordinate, radius: 100.0, identifier: shopList[i].identifier)
-            
-            
-            // モニタリング開始
-            //locationManager.startMonitoring(for: moniteringRegion)
         }
         
     }
@@ -253,18 +216,6 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         let strTmp = "設定したジオフェンスに入りました。"+region.identifier
         print(strTmp)
         
-        /*
-        if( region.identifier == "OmeSuehiroPostOffice" ){
-            notice_name = "青梅末広郵便局"
-            notice_note = "ノートノートノートノートノートノートノートノートノートノートノートノートノート"
-        }else if( region.identifier == "SuperOZAMSuehiro" ){
-            notice_name = "スーパーオザム 末広店"
-            notice_note = "ノートノートノートノートノートノートノートノートノートノートノートノートノート"
-        }else if( region.identifier == "GeoOumeshinmachi" ){
-            notice_name = "ゲオ青梅新町店"
-            notice_note = "ノートノートノートノートノートノートノートノートノートノートノートノートノート"
-        }
- */
         let realm = try! Realm()
         let places = realm.objects(Place.self).filter("identifier like '"+region.identifier+"'")
         places.forEach { place in
@@ -289,8 +240,6 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     
     // ローカル通知の実行
     func doLocalNotification(name:String,note:String){
-        
-        //print("doLocalNotification")
         
         // ローカル通知のの内容
         let content = UNMutableNotificationContent()
