@@ -16,10 +16,48 @@ class View2Controller: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Interface Builderのファイルを読み込む
+        let nib = UINib(nibName: "PlaceCell", bundle: nil)
+        
+        // UITableViewに登録する。NewsCellを使用するという宣言
+        table.register(nib, forCellReuseIdentifier: "PlaceCell")
+
+        // Realmインスタンス取得
+        let realm = try! Realm()
+         
+        // データ全権取得
+        self.tableCells = realm.objects(Place.self)
 
     }
     
     @IBAction func pushRegist(_ sender: Any) {
+        
+        // モデルクラスのインスタンスを取得
+        let MemoInstance:Place = Place()
+         
+        // テキスト入力値をインスタンスに詰める
+        MemoInstance.id = self.idField.text
+        MemoInstance.name = self.nameField.text
+        MemoInstance.address = self.addressField.text
+        MemoInstance.identifier = self.identifierField.text
+         
+        // Realmインスタンス取得
+        let realm = try! Realm()
+         
+        // DB登録処理
+        try! realm.write {
+            realm.add(MemoInstance)
+        }
+         
+        // テーブル再読み込み
+        self.table.reloadData()
+        
+        self.idField.text = "";
+        self.nameField.text = "";
+        self.addressField.text = "";
+        self.identifierField.text = "";
+        
     }
     
     // cellの数を指定
