@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class PlaceCell: UITableViewCell {
     
@@ -27,6 +28,16 @@ class PlaceCell: UITableViewCell {
     }
     
     @IBAction func pushUpdate(_ sender: Any) {
+        let realm = try! Realm()
+        let places = realm.objects(Place.self).filter("id == '"+self.idLabel.text!+"'")
+                
+        places.forEach { place in
+            try! realm.write() {
+                place.name = self.nameField.text!
+                place.address = self.addressField.text!
+                place.identifier = self.identifierField.text!
+            }
+        }
     }
     
 }
