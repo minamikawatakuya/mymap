@@ -65,6 +65,12 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         
         mapView.showsUserLocation = true
         
+        // 拡大表示
+        var cr:MKCoordinateRegion = mapView.region
+        cr.span.latitudeDelta = 0.005
+        cr.span.longitudeDelta = 0.005
+        mapView.setRegion(cr, animated: true)
+        
         collectionView.register(UINib(nibName: "shopCell", bundle: nil), forCellWithReuseIdentifier: "shopCell")
         
         let tblBackColor: UIColor = UIColor.clear
