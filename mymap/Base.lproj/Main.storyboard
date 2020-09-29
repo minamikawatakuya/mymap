@@ -132,11 +132,18 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sky-Lm-wWZ">
                                 <rect key="frame" x="20" y="228" width="374" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="登録"/>
+                                <connections>
+                                    <action selector="pushRegist:" destination="NnY-7j-8H1" eventType="touchUpInside" id="lLJ-Yn-WmM"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="U1g-8p-cLR">
                                 <rect key="frame" x="0.0" y="277" width="414" height="619"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="NnY-7j-8H1" id="hZB-E3-Zod"/>
+                                    <outlet property="delegate" destination="NnY-7j-8H1" id="4TF-NJ-mUM"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -171,6 +178,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4hO-cj-l9R"/>
                     </view>
+                    <connections>
+                        <outlet property="addressField" destination="asz-Uq-eh3" id="KAl-sK-WcG"/>
+                        <outlet property="idField" destination="Hae-Fx-hst" id="gkc-C5-Vsx"/>
+                        <outlet property="identifierField" destination="fdP-LA-xwo" id="36v-O0-tMz"/>
+                        <outlet property="nameField" destination="n0z-Uc-0I8" id="0WB-YZ-RLc"/>
+                        <outlet property="table" destination="U1g-8p-cLR" id="d0D-Ra-nJN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xce-4H-JKe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
