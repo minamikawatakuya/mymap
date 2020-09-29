@@ -20,6 +20,7 @@
 		7DA8CF362523231900187FAF /* View2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA8CF352523231900187FAF /* View2Controller.swift */; };
 		7DA8CF392523297700187FAF /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA8CF372523297700187FAF /* PlaceCell.swift */; };
 		7DA8CF3A2523297700187FAF /* PlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DA8CF382523297700187FAF /* PlaceCell.xib */; };
+		7DA8CF3C25232B4B00187FAF /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA8CF3B25232B4B00187FAF /* Place.swift */; };
 		7DFBA735251DAADD00439BE5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DFBA734251DAADD00439BE5 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		7DA8CF352523231900187FAF /* View2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View2Controller.swift; sourceTree = "<group>"; };
 		7DA8CF372523297700187FAF /* PlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		7DA8CF382523297700187FAF /* PlaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceCell.xib; sourceTree = "<group>"; };
+		7DA8CF3B25232B4B00187FAF /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		7DFBA734251DAADD00439BE5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		84642C5A9DAE358765B33570 /* Pods_mymap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mymap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A16502EC5BA75EBA895D66A /* Pods-mymap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymap.release.xcconfig"; path = "Target Support Files/Pods-mymap/Pods-mymap.release.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				7D228B5A251DA87C00C78024 /* Info.plist */,
 				7D9DC511251E0E3A00B6AA4C /* shopCell.swift */,
 				7D9DC512251E0E3A00B6AA4C /* shopCell.xib */,
+				7DA8CF3B25232B4B00187FAF /* Place.swift */,
 			);
 			path = mymap;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				7D228B4D251DA87700C78024 /* AppDelegate.swift in Sources */,
 				7D228B4F251DA87700C78024 /* SceneDelegate.swift in Sources */,
 				7D9DC513251E0E3A00B6AA4C /* shopCell.swift in Sources */,
+				7DA8CF3C25232B4B00187FAF /* Place.swift in Sources */,
 				7DA8CF392523297700187FAF /* PlaceCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
