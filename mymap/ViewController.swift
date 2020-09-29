@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  mymap
-//
-//  Created by minamikawa on 2020/09/25.
-//  Copyright © 2020 minamikawa. All rights reserved.
-//
 
 import UIKit
 import CoreLocation
@@ -27,9 +20,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     var notice_name:String = "hoge"
     var notice_note:String = "hoge"
     
-    
     @IBOutlet weak var collectionView: UICollectionView!
-    
     
     @IBOutlet var mapView: MKMapView!
     var locationManager: CLLocationManager!
@@ -108,7 +99,6 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shopList.count
-        //return 1
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -264,7 +254,6 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         }
         
     }
-
 
 }
 
