@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import MapKit
 import UserNotifications
+import RealmSwift
 
 class ViewController: UIViewController, CLLocationManagerDelegate,
 UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
