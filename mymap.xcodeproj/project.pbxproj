@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,7 @@
 		7D9DC510251E04B400B6AA4C /* hoge_ozakueki.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 7D9DC50F251E04B400B6AA4C /* hoge_ozakueki.gpx */; };
 		7D9DC513251E0E3A00B6AA4C /* shopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9DC511251E0E3A00B6AA4C /* shopCell.swift */; };
 		7D9DC514251E0E3A00B6AA4C /* shopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D9DC512251E0E3A00B6AA4C /* shopCell.xib */; };
+		7DA8CF362523231900187FAF /* View2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA8CF352523231900187FAF /* View2Controller.swift */; };
 		7DFBA735251DAADD00439BE5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DFBA734251DAADD00439BE5 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		7D9DC50F251E04B400B6AA4C /* hoge_ozakueki.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = hoge_ozakueki.gpx; sourceTree = "<group>"; };
 		7D9DC511251E0E3A00B6AA4C /* shopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shopCell.swift; sourceTree = "<group>"; };
 		7D9DC512251E0E3A00B6AA4C /* shopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = shopCell.xib; sourceTree = "<group>"; };
+		7DA8CF352523231900187FAF /* View2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View2Controller.swift; sourceTree = "<group>"; };
 		7DFBA734251DAADD00439BE5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		84642C5A9DAE358765B33570 /* Pods_mymap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mymap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A16502EC5BA75EBA895D66A /* Pods-mymap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mymap.release.xcconfig"; path = "Target Support Files/Pods-mymap/Pods-mymap.release.xcconfig"; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				7D228B4C251DA87700C78024 /* AppDelegate.swift */,
 				7D228B4E251DA87700C78024 /* SceneDelegate.swift */,
 				7D228B50251DA87700C78024 /* ViewController.swift */,
+				7DA8CF352523231900187FAF /* View2Controller.swift */,
 				7D9DC50F251E04B400B6AA4C /* hoge_ozakueki.gpx */,
 				7D228B52251DA87700C78024 /* Main.storyboard */,
 				7D228B55251DA87C00C78024 /* Assets.xcassets */,
@@ -101,7 +104,6 @@
 				6D170926933B24E864FF92C5 /* Pods-mymap.debug.xcconfig */,
 				8A16502EC5BA75EBA895D66A /* Pods-mymap.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -223,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D228B51251DA87700C78024 /* ViewController.swift in Sources */,
+				7DA8CF362523231900187FAF /* View2Controller.swift in Sources */,
 				7D228B4D251DA87700C78024 /* AppDelegate.swift in Sources */,
 				7D228B4F251DA87700C78024 /* SceneDelegate.swift in Sources */,
 				7D9DC513251E0E3A00B6AA4C /* shopCell.swift in Sources */,
