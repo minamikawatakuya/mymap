@@ -57,6 +57,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /*
         shopList.append( (
             name : "青梅末広郵便局" ,
             address : "東京都青梅市末広町２丁目２−１",
@@ -81,6 +82,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
             note : "ノートノートノートノートノートノートノートノートノートノート",
             identifier : "GeoOumeshinmachi"
         ) )
+ */
         
         locationManager = CLLocationManager()  // 変数を初期化
         locationManager.delegate = self  // delegateとしてself(自インスタンス)を設定
@@ -224,6 +226,18 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         }
         
         doLocalNotification(name:notice_name,note:notice_note)
+        
+        shopList.append( (
+            name : notice_name ,
+            address : "hoge",
+            latitude : 0.0,
+            longitude : 0.0,
+            note : notice_note,
+            identifier : "hoge"
+        ) )
+        
+        collectionView.reloadData()
+        
     }
 
     // ジオフェンス領域から出たときに呼ばれる
