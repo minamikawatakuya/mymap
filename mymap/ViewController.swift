@@ -25,6 +25,8 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     var pin_latitude:String = "0.0"
     var pin_longitude:String = "0.0"
     
+    var pins: [String: MKPointAnnotation] = [:]
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet var mapView: MKMapView!
@@ -216,7 +218,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         collectionView.reloadData()
         
         // ピンを立てる
-        dispPin(lat:pin_latitude,lon:pin_longitude,title:notice_name,subtitle:notice_note)
+        dispPin(lat:pin_latitude,lon:pin_longitude,title:notice_name,subtitle:notice_note,identifier:placeIdentifier)
         
     }
 
@@ -246,6 +248,9 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         }
         shopList = tmpList
         collectionView.reloadData()
+        
+        // PINを削除
+        deletePin(identifier:region.identifier)
         
     }
 
@@ -278,7 +283,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         
     }
     
-    func dispPin(lat:String,lon:String,title:String,subtitle:String){
+    func dispPin(lat:String,lon:String,title:String,subtitle:String,identifier:String){
         
         // 経度、緯度
         let myLatitude: CLLocationDegrees = Double(lat) ?? 0.0
@@ -288,20 +293,26 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         let center: CLLocationCoordinate2D = CLLocationCoordinate2DMake(myLatitude, myLongitude)
         
         // ピンを生成
-        let myPin: MKPointAnnotation = MKPointAnnotation()
+        pins[identifier] = MKPointAnnotation()
 
         // 座標を設定
-        myPin.coordinate = center
+        pins[identifier]?.coordinate = center
 
         // タイトルを設定
-        myPin.title = title
+        pins[identifier]?.title = title
 
         // サブタイトルを設定
-        myPin.subtitle = subtitle
+        pins[identifier]?.subtitle = subtitle
 
         // MapViewにピンを追加
-        mapView.addAnnotation(myPin)
+        mapView.addAnnotation(pins[identifier]!)
         
+    }
+    
+    func deletePin(identifier:String){
+        if( pins[identifier] != nil ){
+            mapView.removeAnnotation(pins[identifier]!)
+        }
     }
 
 }
