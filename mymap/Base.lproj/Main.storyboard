@@ -78,7 +78,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYq-cd-McE">
                                 <rect key="frame" x="20" y="103" width="70" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="2gK-pb-DjY"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="2gK-pb-DjY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -87,7 +87,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uaj-8S-Pgf">
                                 <rect key="frame" x="20" y="146" width="70" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="pal-FI-mqB"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="pal-FI-mqB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -96,7 +96,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YK5-b9-9l4">
                                 <rect key="frame" x="20" y="186" width="70" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="Cdb-NI-YZ4"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="Cdb-NI-YZ4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -105,7 +105,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="identifier" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2b-2Z-scS">
                                 <rect key="frame" x="20" y="230" width="70" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="SfR-5V-arf"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="SfR-5V-arf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -217,6 +217,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="5w2-Gw-Azy" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ccg-5S-afc">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
