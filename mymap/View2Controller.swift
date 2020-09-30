@@ -1,6 +1,7 @@
 
 import UIKit
 import RealmSwift
+import MapKit
 
 class View2Controller: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -39,28 +40,36 @@ class View2Controller: UIViewController, UITableViewDelegate, UITableViewDataSou
         let MemoInstance:Place = Place()
          
         // テキスト入力値をインスタンスに詰める
-        //MemoInstance.id = self.idField.text
         MemoInstance.id = String(idvalue)
         MemoInstance.name = self.nameField.text
         MemoInstance.address = self.addressField.text
         MemoInstance.identifier = self.identifierField.text
-         
-        // Realmインスタンス取得
-        let realm = try! Realm()
-         
-        // DB登録処理
-        try! realm.write {
-            realm.add(MemoInstance)
+        
+        CLGeocoder().geocodeAddressString(self.addressField.text!) { placemarks, error in
+            if let lat = placemarks?.first?.location?.coordinate.latitude {
+                MemoInstance.latitude = String(lat)
+            }
+            if let lng = placemarks?.first?.location?.coordinate.longitude {
+                MemoInstance.longitude = String(lng)
+            }
+            
+            // Realmインスタンス取得
+            let realm = try! Realm()
+             
+            // DB登録処理
+            try! realm.write {
+                realm.add(MemoInstance)
+            }
+             
+            // テーブル再読み込み
+            self.table.reloadData()
+            
+            self.nameField.text = "";
+            self.addressField.text = "";
+            self.identifierField.text = "";
+            
         }
          
-        // テーブル再読み込み
-        self.table.reloadData()
-        
-        self.idField.text = "";
-        self.nameField.text = "";
-        self.addressField.text = "";
-        self.identifierField.text = "";
-        
     }
     
     // cellの数を指定

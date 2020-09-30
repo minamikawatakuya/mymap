@@ -132,23 +132,15 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         for i in 0..<self.tableCells.count{
             
             let tmpCell: Place = self.tableCells[i]
-            let tmpAddress:String = tmpCell.address!
             var tmpLat = 0.0
             var tmpLng = 0.0
             
-            CLGeocoder().geocodeAddressString(tmpAddress) { placemarks, error in
-                if let lat = placemarks?.first?.location?.coordinate.latitude {
-                    tmpLat = lat
-                }
-                if let lng = placemarks?.first?.location?.coordinate.longitude {
-                    tmpLng = lng
-                }
-                
-                moniteringCordinate = CLLocationCoordinate2DMake(tmpLat, tmpLng)
-                moniteringRegion = CLCircularRegion.init(center: moniteringCordinate, radius: 100.0, identifier: tmpCell.identifier!)
-                self.locationManager.startMonitoring(for: moniteringRegion)
-                
-            }
+            tmpLat = Double(tmpCell.latitude!) ?? 0.0
+            tmpLng = Double(tmpCell.longitude!) ?? 0.0
+            
+            moniteringCordinate = CLLocationCoordinate2DMake(tmpLat, tmpLng)
+            moniteringRegion = CLCircularRegion.init(center: moniteringCordinate, radius: 100.0, identifier: tmpCell.identifier!)
+            locationManager.startMonitoring(for: moniteringRegion)
             
         }
         
