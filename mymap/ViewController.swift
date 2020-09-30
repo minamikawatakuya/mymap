@@ -20,8 +20,10 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     // モデルクラスを使用し、取得データを格納する変数を作成
     var tableCells: Results<Place>!
     
-    var notice_name:String = "hoge"
-    var notice_note:String = "hoge"
+    var notice_name:String = ""
+    var notice_note:String = ""
+    var pin_latitude:String = "0.0"
+    var pin_longitude:String = "0.0"
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -196,13 +198,15 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
             notice_name = place.name!
             notice_note = place.address!
             placeIdentifier = place.identifier!
+            pin_latitude = place.latitude!
+            pin_longitude = place.longitude!
         }
         
         doLocalNotification(name:notice_name,note:notice_note)
         
         shopList.append( (
             name : notice_name ,
-            address : "hoge",
+            address : "",
             latitude : 0.0,
             longitude : 0.0,
             note : notice_note,
@@ -210,6 +214,9 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         ) )
         
         collectionView.reloadData()
+        
+        // ピンを立てる
+        dispPin(lat:pin_latitude,lon:pin_longitude,title:notice_name,subtitle:notice_note)
         
     }
 
@@ -268,6 +275,32 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
                 print(error.localizedDescription)
             }
         }
+        
+    }
+    
+    func dispPin(lat:String,lon:String,title:String,subtitle:String){
+        
+        // 経度、緯度
+        let myLatitude: CLLocationDegrees = Double(lat) ?? 0.0
+        let myLongitude: CLLocationDegrees = Double(lon) ?? 0.0
+
+        // 中心点
+        let center: CLLocationCoordinate2D = CLLocationCoordinate2DMake(myLatitude, myLongitude)
+        
+        // ピンを生成
+        let myPin: MKPointAnnotation = MKPointAnnotation()
+
+        // 座標を設定
+        myPin.coordinate = center
+
+        // タイトルを設定
+        myPin.title = title
+
+        // サブタイトルを設定
+        myPin.subtitle = subtitle
+
+        // MapViewにピンを追加
+        mapView.addAnnotation(myPin)
         
     }
 
