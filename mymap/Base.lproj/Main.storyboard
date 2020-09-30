@@ -192,11 +192,11 @@
             </objects>
             <point key="canvasLocation" x="1952" y="881"/>
         </scene>
-        <!--Item-->
+        <!--map-->
         <scene sceneID="0Pp-EJ-GFe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ltv-Z3-kF7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="a1E-8H-1hY"/>
+                    <tabBarItem key="tabBarItem" title="map" id="a1E-8H-1hY"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="L51-cK-gZb">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -229,11 +229,11 @@
             </objects>
             <point key="canvasLocation" x="-77" y="578"/>
         </scene>
-        <!--Item-->
+        <!--Regist-->
         <scene sceneID="X5J-Hi-BWJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uXc-xj-0MO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Udo-51-mh9"/>
+                    <tabBarItem key="tabBarItem" title="Regist" id="Udo-51-mh9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Klh-QN-JBe">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
