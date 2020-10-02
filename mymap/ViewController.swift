@@ -27,6 +27,14 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
     
     var pins: [String: MKPointAnnotation] = [:]
     
+    var timer = Timer()
+    
+    //processing count
+    var count = 0
+    
+    var latitudeNow:Double = 0.0
+    var longitudeNow:Double = 0.0
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet var mapView: MKMapView!
@@ -86,8 +94,88 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         // データ全権取得
         self.tableCells = realm.objects(Place.self)
         
-        doGeofenceStart()
+        //doGeofenceStart()
         
+        //for i in 0..<self.tableCells.count{
+        
+        
+        
+        
+        
+        //timer処理
+        timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: { (timer) in
+            
+            // 一覧から削除
+            var tmpList : [
+                (
+                name:String , address:String, latitude:Double, longitude:Double,
+                note:String , identifier:String
+                )
+            ] = []
+            
+            self.count += 1
+            //self.count値をコンソールへ出力
+            print(self.count)
+            print(self.latitudeNow)
+            print(self.longitudeNow)
+            //print(self.tableCells.count)
+            var dist = ""
+            var distInt:Int = 0
+            for i in 0..<self.tableCells.count{
+                
+                print(self.tableCells[i].name!)
+                print(self.tableCells[i].latitude!)
+                print(self.tableCells[i].longitude!)
+                
+                let tmpLatPlace:Double = atof(self.tableCells[i].latitude)
+                let tmpLonPlace:Double = atof(self.tableCells[i].longitude)
+                
+                dist = self.getDistance(
+                    latNow:self.latitudeNow,
+                    lonNow:self.longitudeNow,
+                    latPlace:tmpLatPlace,
+                    lonPlace:tmpLonPlace
+                )
+                print(dist)
+                distInt = Int(dist) ?? 0
+                
+                if( distInt < 200 ){
+                    tmpList.append( (
+                        name : self.tableCells[i].name! ,
+                        address : self.tableCells[i].address!,
+                        latitude : tmpLatPlace,
+                        longitude : tmpLonPlace,
+                        note : self.tableCells[i].address!,
+                        identifier : self.tableCells[i].identifier!
+                    ) )
+                    
+                }
+                
+            }
+            
+            self.shopList = tmpList
+            self.collectionView.reloadData()
+            
+            
+            
+            
+            
+            
+            
+        })
+        
+    }
+    
+    func getDistance(latNow:Double,lonNow:Double,latPlace:Double,lonPlace:Double)-> String{
+        //let 現在地の緯度: Double = Double(latNow)
+        //let 現在地の経度: Double = Double(lonNow)
+        //let 行き先の緯度: Double = Double(latPlace)
+        //let 行き先の経度: Double = Double(lonPlace)
+        let nowInfo:CLLocation = CLLocation(latitude: latNow, longitude: lonNow)
+        let placeInfo:CLLocation = CLLocation(latitude: latPlace, longitude: lonPlace)
+        let dist = placeInfo.distance(from: nowInfo)
+        let distInt = Int(dist)
+        return String(distInt)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -115,6 +203,9 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         let latitude = (locations.last?.coordinate.latitude.description)!
         print("[DBG]longitude : " + longitude)
         print("[DBG]latitude : " + latitude)
+        
+        latitudeNow = Double(latitude) ?? 0.0
+        longitudeNow = Double(longitude) ?? 0.0
         
         myLock.lock()
         mapView.setCenter((locations.last?.coordinate)!, animated: true)
@@ -204,8 +295,9 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
             pin_longitude = place.longitude!
         }
         
-        doLocalNotification(name:notice_name,note:notice_note)
+        //doLocalNotification(name:notice_name,note:notice_note)
         
+        /*
         shopList.append( (
             name : notice_name ,
             address : "",
@@ -214,8 +306,8 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
             note : notice_note,
             identifier : placeIdentifier
         ) )
-        
         collectionView.reloadData()
+ */
         
         // ピンを立てる
         dispPin(lat:pin_latitude,lon:pin_longitude,title:notice_name,subtitle:notice_note,identifier:placeIdentifier)
@@ -228,6 +320,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         print(strTmp)
         
         // 一覧から削除
+        /*
         var tmpList : [
             (
             name:String , address:String, latitude:Double, longitude:Double,
@@ -248,6 +341,7 @@ UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFl
         }
         shopList = tmpList
         collectionView.reloadData()
+ */
         
         // PINを削除
         deletePin(identifier:region.identifier)
